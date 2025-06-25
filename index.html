@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    BusinessPro Theme v1.0.0
+    
+    Theme Name: BusinessPro - Modern Local Business Website
+    Author: Amanullah Khan
+    Company: Nexaman Creations
+    Website: www.nexaman.site
+    Email: hireme@nexaman.site
+    
+    Release Date: June 2025
+    License: Premium Theme
+    
+    Description: A modern, single-page website template for local businesses
+    featuring animated illustrations, scroll effects, and smooth interactions.
+    Perfect for bakeries, cafes, and small service businesses.
+    
+    Copyright (c) 2025 Nexaman Creations. All rights reserved.
+    For inquiries: hireme@nexaman.site | Visit: www.nexaman.site
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-author" content="Amanullah Khan">
+    <meta name="theme-company" content="Nexaman Creations">
+    <meta name="theme-website" content="www.nexaman.site">
+    <meta name="theme-email" content="hireme@nexaman.site">
+    <meta name="theme-version" content="1.0.0">
+    <title>Golden Crust Artisan Bakery - Fresh Baked Daily</title>
+    <style>
+        /*
+        =========================================
+        BusinessPro Theme Stylesheet v1.0.0
+        =========================================
+        
+        Theme: BusinessPro
+        Author: Amanullah Khan  
+        Company: Nexaman Creations
+        Website: www.nexaman.site
+        Email: hireme@nexaman.site
+        License: Premium Theme
+        
+        Description: Modern, responsive stylesheet for 
+        local business websites with calming colors,
+        smooth animations, and professional design.
+        
+        Copyright (c) 2025 Nexaman Creations
+        Contact: hireme@nexaman.site | www.nexaman.site
+        =========================================
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2B48C;
+            --accent-color: #F4A460;
+            --background-light: #FDF5E6;
+            --text-dark: #3E2723;
+            --text-light: #6D4C41;
+            --white: #FFFFFF;
+            --shadow: rgba(139, 69, 19, 0.1);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: left 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-nav {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav li {
+            margin: 2rem 0;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Hero Section with 3-Layer Slider */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide:nth-child(1) {
+            background-image: linear-gradient(rgba(139, 69, 19, 0.4), rgba(0, 0, 0, 0.3)), 
+                              url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(2) {
+            background-image: linear-gradient(rgba(244, 164, 96, 0.4), rgba(0, 0, 0, 0.3)), 
+                              url('https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(3) {
+            background-image: linear-gradient(rgba(210, 180, 140, 0.4), rgba(0, 0, 0, 0.3)), 
+                              url('https://images.unsplash.com/photo-1485808191679-5f86510681a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--white);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease 0.5s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease 0.7s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease 0.9s forwards;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        /* Hero Navigation Dots */
+        .hero-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 15;
+        }
+
+        .hero-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-dot.active {
+            background: var(--white);
+            transform: scale(1.2);
+        }
+
+        /* Floating animated elements */
+        .floating-element {
+            position: absolute;
+            z-index: 5;
+            animation: floatAround 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .floating-cupcake {
+            font-size: 3rem;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-coffee {
+            font-size: 2.5rem;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-croissant {
+            font-size: 2.8rem;
+            top: 30%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+
+        .floating-donut {
+            font-size: 2.2rem;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        .floating-bread {
+            font-size: 2.5rem;
+            top: 70%;
+            left: 30%;
+            animation-delay: 3s;
+        }
+
+        .floating-cake {
+            font-size: 2.8rem;
+            top: 15%;
+            right: 40%;
+            animation-delay: 5s;
+        }
+
+        /* Layer 2: Moving cupcakes */
+        .cupcake-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .moving-cupcake {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: moveCupcake 12s linear infinite;
+        }
+
+        .moving-cupcake:nth-child(1) {
+            top: 25%;
+            animation-delay: 0s;
+        }
+
+        .moving-cupcake:nth-child(2) {
+            top: 45%;
+            animation-delay: 4s;
+        }
+
+        .moving-cupcake:nth-child(3) {
+            top: 65%;
+            animation-delay: 8s;
+        }
+
+        /* Layer 3: Coffee steam effect */
+        .coffee-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .coffee-steam {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: steamRise 6s ease-in-out infinite;
+        }
+
+        .coffee-steam:nth-child(1) {
+            top: 40%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .coffee-steam:nth-child(2) {
+            top: 50%;
+            right: 30%;
+            animation-delay: 2s;
+        }
+
+        .coffee-steam:nth-child(3) {
+            bottom: 40%;
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        /* Floating Service Menu */
+        .floating-services {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px var(--shadow);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-icon:hover {
+            transform: scale(1.1);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .service-tooltip {
+            position: absolute;
+            right: 80px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .service-icon:hover .service-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: var(--background-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .service-svg {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            fill: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-svg {
+            fill: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .portfolio-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .portfolio-slide {
+            display: none;
+            position: relative;
+        }
+
+        .portfolio-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .portfolio-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 2rem;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--background-light);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            display: none;
+            opacity: 0;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .speech-bubble {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow);
+            margin-bottom: 2rem;
+            transform: scale(0.9);
+            animation: bubbleIn 0.5s ease forwards;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid var(--white);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .map-container {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatAround {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) translateX(10px) rotate(5deg); 
+            }
+            50% { 
+                transform: translateY(-25px) translateX(-5px) rotate(-3deg); 
+            }
+            75% { 
+                transform: translateY(-10px) translateX(15px) rotate(8deg); 
+            }
+        }
+
+        @keyframes moveCupcake {
+            0% {
+                left: -100px;
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(10px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(270deg);
+            }
+            100% {
+                left: calc(100% + 100px);
+                transform: translateY(0px) rotate(360deg);
+            }
+        }
+
+        @keyframes steamRise {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(1);
+            }
+            20% {
+                opacity: 0.3;
+                transform: translateY(0px) scale(1.1);
+            }
+            80% {
+                opacity: 0.3;
+                transform: translateY(-30px) scale(0.9);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.7);
+            }
+        }
+        }
+
+        @keyframes bubbleIn {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .floating-element {
+                font-size: 2rem;
+            }
+
+            .moving-cupcake {
+                font-size: 1.5rem;
+            }
+
+            .coffee-steam {
+                font-size: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .floating-services {
+                right: 1rem;
+                gap: 0.5rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .floating-element {
+                font-size: 1.5rem;
+            }
+
+            .moving-cupcake {
+                font-size: 1.2rem;
+            }
+
+            .coffee-steam {
+                font-size: 1rem;
+            }
+
+            .floating-services {
+                display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo">Golden Crust</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Floating Services Menu -->
+    <div class="floating-services">
+        <div class="service-icon" data-service="bread">
+            🍞
+            <span class="service-tooltip">Fresh Bread</span>
+        </div>
+        <div class="service-icon" data-service="pastries">
+            🥐
+            <span class="service-tooltip">Pastries</span>
+        </div>
+        <div class="service-icon" data-service="cakes">
+            🎂
+            <span class="service-tooltip">Custom Cakes</span>
+        </div>
+        <div class="service-icon" data-service="coffee">
+            ☕
+            <span class="service-tooltip">Coffee</span>
+        </div>
+    </div>
+
+    <!-- Hero Section with 3-Layer Slider -->
+    <section id="home" class="hero">
+        <!-- Background Image Slider (Layer 1) -->
+        <div class="hero-slider">
+            <div class="hero-slide active"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+
+        <!-- Cupcake Animation Layer (Layer 2) -->
+        <div class="cupcake-layer">
+            <div class="moving-cupcake">🧁</div>
+            <div class="moving-cupcake">🧁</div>
+            <div class="moving-cupcake">🧁</div>
+        </div>
+
+        <!-- Coffee Steam Layer (Layer 3) -->
+        <div class="coffee-layer">
+            <div class="coffee-steam">☕</div>
+            <div class="coffee-steam">☕</div>
+            <div class="coffee-steam">☕</div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-element floating-cupcake">🧁</div>
+        <div class="floating-element floating-coffee">☕</div>
+        <div class="floating-element floating-croissant">🥐</div>
+        <div class="floating-element floating-donut">🍩</div>
+        <div class="floating-element floating-bread">🍞</div>
+        <div class="floating-element floating-cake">🎂</div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Golden Crust Artisan Bakery</h1>
+            <p>Fresh baked goods made with love, traditional recipes, and the finest ingredients since 1995</p>
+            <a href="#contact" class="cta-button">Order Now</a>
+        </div>
+
+        <!-- Hero Navigation -->
+        <div class="hero-nav">
+            <div class="hero-dot active" data-slide="0"></div>
+            <div class="hero-dot" data-slide="1"></div>
+            <div class="hero-dot" data-slide="2"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Crafted with Passion</h3>
+                    <p>For over 25 years, Golden Crust has been the heart of our community, serving freshly baked breads, pastries, and cakes that bring families together around the table.</p>
+                    <p>Every morning at 4 AM, our master bakers begin the ancient art of bread making, using time-honored techniques passed down through generations. We source only the finest organic flours and local ingredients to create the perfect taste you've come to love.</p>
+                    <p>From our family to yours, we're committed to providing the freshest, most delicious baked goods that turn every meal into a celebration.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisan baker at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="35" r="15" fill="currentColor"/>
+                        <ellipse cx="50" cy="65" rx="25" ry="15" fill="currentColor"/>
+                        <path d="M35 50 Q50 45 65 50" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <h3>Artisan Breads</h3>
+                    <p>Daily fresh sourdough, whole grain, and specialty breads baked using traditional methods</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-svg" viewBox="0 0 100 100">
+                        <path d="M20 70 Q50 40 80 70 L75 80 Q50 50 25 80 Z" fill="currentColor"/>
+                        <circle cx="35" cy="65" r="3" fill="white"/>
+                        <circle cx="50" cy="60" r="3" fill="white"/>
+                        <circle cx="65" cy="65" r="3" fill="white"/>
+                    </svg>
+                    <h3>French Pastries</h3>
+                    <p>Delicate croissants, pain au chocolat, and authentic French pastries made fresh daily</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-svg" viewBox="0 0 100 100">
+                        <rect x="25" y="45" width="50" height="30" rx="5" fill="currentColor"/>
+                        <rect x="30" y="35" width="40" height="10" rx="5" fill="currentColor"/>
+                        <rect x="35" y="25" width="30" height="10" rx="5" fill="currentColor"/>
+                        <line x1="40" y1="20" x2="40" y2="15" stroke="currentColor" stroke-width="2"/>
+                        <line x1="50" y1="20" x2="50" y2="15" stroke="currentColor" stroke-width="2"/>
+                        <line x1="60" y1="20" x2="60" y2="15" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <h3>Custom Cakes</h3>
+                    <p>Beautiful custom cakes for weddings, birthdays, and special occasions</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-svg" viewBox="0 0 100 100">
+                        <ellipse cx="50" cy="70" rx="20" ry="8" fill="currentColor"/>
+                        <rect x="30" y="30" width="40" height="40" rx="5" fill="currentColor"/>
+                        <path d="M45 20 Q50 15 55 20 Q50 25 45 20" fill="currentColor"/>
+                        <circle cx="40" cy="45" r="2" fill="white"/>
+                        <circle cx="60" cy="45" r="2" fill="white"/>
+                        <circle cx="50" cy="55" r="2" fill="white"/>
+                    </svg>
+                    <h3>Coffee & Beverages</h3>
+                    <p>Premium coffee, fresh juices, and specialty drinks to complement your baked goods</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="portfolio-carousel">
+                <div class="portfolio-slide active">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisan sourdough bread">
+                    <div class="portfolio-overlay">
+                        <h3>Sourdough Collection</h3>
+                        <p>Our signature sourdough breads, fermented for 24 hours for the perfect tang and texture</p>
+                    </div>
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab794f4afe5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="French croissants">
+                    <div class="portfolio-overlay">
+                        <h3>French Pastries</h3>
+                        <p>Buttery, flaky croissants and pain au chocolat made with imported French butter</p>
+                    </div>
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding cake">
+                    <div class="portfolio-overlay">
+                        <h3>Custom Wedding Cakes</h3>
+                        <p>Elegant custom cakes designed to make your special day unforgettable</p>
+                    </div>
+                </div>
+                <div class="portfolio-slide">
+                    <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fresh cookies">
+                    <div class="portfolio-overlay">
+                        <h3>Gourmet Cookies</h3>
+                        <p>Hand-crafted cookies using premium chocolate and locally sourced ingredients</p>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-nav">
+                <span class="portfolio-dot active" data-slide="0"></span>
+                <span class="portfolio-dot" data-slide="1"></span>
+                <span class="portfolio-dot" data-slide="2"></span>
+                <span class="portfolio-dot" data-slide="3"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <div class="speech-bubble">
+                        <p class="testimonial-text">"The sourdough bread from Golden Crust is absolutely incredible! It's become a weekly tradition for our family. The crust is perfect and the flavor is unmatched!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="speech-bubble">
+                        <p class="testimonial-text">"Golden Crust made our wedding cake and it was absolutely stunning! Not only did it look beautiful, but it tasted even better. All our guests are still talking about it!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael & Lisa Chen</h4>
+                            <p>Wedding Couple</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="speech-bubble">
+                        <p class="testimonial-text">"As a local restaurant owner, I trust Golden Crust for all our bread needs. Their consistency and quality are exceptional. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="David Rodriguez" class="author-avatar">
+                        <div class="author-info">
+                            <h4>David Rodriguez</h4>
+                            <p>Restaurant Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="speech-bubble">
+                        <p class="testimonial-text">"The French pastries here transport me back to Paris! The attention to detail and authentic flavors make this place truly special."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Emma Thompson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Emma Thompson</h4>
+                            <p>Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Us Today</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Address</strong><br>
+                            123 Baker Street, Downtown<br>
+                            Springfield, IL 62701
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            hello@goldencrust.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Hours</strong><br>
+                            Mon-Sat: 6:00 AM - 8:00 PM<br>
+                            Sunday: 7:00 AM - 6:00 PM
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.4!2d-89.6501481!3d39.8014408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDQ4JzA1LjIiTiA4OcKwMzknMDAuNSJX!5e0!3m2!1sen!2sus!4v1234567890"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="social-icon">📘</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">📱</a>
+            </div>
+            <p>&copy; 2025 Golden Crust Artisan Bakery. All rights reserved.</p>
+            <p>Website developed by <strong>Amanullah Khan</strong> | <strong>Nexaman Creations</strong></p>
+            <p>Contact: <a href="mailto:hireme@nexaman.site" style="color: var(--accent-color);">hireme@nexaman.site</a> | Visit: <a href="https://www.nexaman.site" style="color: var(--accent-color);" target="_blank">www.nexaman.site</a></p>
+        </div>
+    </footer>
+
+    <script>
+        /*
+        ========================================
+        BusinessPro Theme JavaScript v1.0.0
+        ========================================
+        
+        Theme: BusinessPro
+        Author: Amanullah Khan
+        Company: Nexaman Creations
+        Website: www.nexaman.site
+        Email: hireme@nexaman.site
+        License: Premium Theme
+        
+        Interactive functionality for modern
+        local business websites with smooth
+        animations and scroll effects.
+        
+        Copyright (c) 2025 Nexaman Creations
+        Contact: hireme@nexaman.site | www.nexaman.site
+        ========================================
+        */
+
+        // Hero Slider Management
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.hero-dot');
+
+        function showHeroSlide(index) {
+            // Remove active class from all slides and dots
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            heroSlides[index].classList.add('active');
+            heroDots[index].classList.add('active');
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        }
+
+        // Auto advance hero slider every 5 seconds
+        setInterval(nextHeroSlide, 5000);
+
+        // Hero dot navigation
+        heroDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentHeroSlide = index;
+                showHeroSlide(currentHeroSlide);
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.querySelectorAll('.section-title, .about-text, .about-image, .service-card, .contact-info, .map-container').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Portfolio Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.portfolio-slide');
+        const dots = document.querySelectorAll('.portfolio-dot');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto advance portfolio
+        setInterval(nextSlide, 4000);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Testimonial Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            testimonials[index].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        // Auto advance testimonials
+        setInterval(nextTestimonial, 5000);
+
+        // Floating Services Menu
+        document.querySelectorAll('.service-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                const service = icon.dataset.service;
+                document.querySelector('#services').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Service card animations
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add staggered animation to service cards
+        const serviceObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            serviceObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
